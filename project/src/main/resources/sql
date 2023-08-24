@@ -1,0 +1,79 @@
+CREATE DATABASE IF NOT EXISTS Hardware;
+CREATE TABLE User
+(
+    userName VARCHAR(10),
+    password VARCHAR(10)
+);
+
+CREATE TABLE Admin
+(
+    userName VARCHAR(10),
+    password VARCHAR(10)
+);
+
+CREATE TABLE Customer
+(
+    cusId   VARCHAR(10) PRIMARY KEY,
+    cusName VARCHAR(10),
+    contact VARCHAR(10)
+);
+
+CREATE TABLE Invoice
+(
+    invoiceId     VARCHAR(10) PRIMARY KEY,
+    cusId         VARCHAR(10),
+    total         INT,
+    totalDiscount INT,
+    invoiceDate   DATE,
+    CONSTRAINT FOREIGN KEY (cusId) REFERENCES Customer (cusId)
+        ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+CREATE TABLE Product
+(
+    productId   VARCHAR(10) PRIMARY KEY,
+    productName VARCHAR(10),
+    nickName    VARCHAR(10),
+    state       VARCHAR(10),
+    cost        INT,
+    qty         INT,
+    addedDate   DATE
+);
+
+CREATE TABLE Orders
+(
+    orderId       VARCHAR(10) PRIMARY KEY,
+    total         INT,
+    date          date,
+    totalDiscount INT
+);
+
+CREATE TABLE InvoiceDetails
+(
+    productId VARCHAR(10),
+    invoiceId VARCHAR(10),
+    discount  INT,
+    CONSTRAINT PRIMARY KEY (productId, invoiceId),
+    CONSTRAINT FOREIGN KEY (productId) REFERENCES Product (productId)
+        ON DELETE CASCADE ON UPDATE CASCADE,
+    CONSTRAINT FOREIGN KEY (invoiceId) REFERENCES Invoice (invoiceId)
+        ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
