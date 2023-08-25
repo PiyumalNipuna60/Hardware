@@ -32,13 +32,51 @@ public class PlaceOrderFormController {
     }
 
     public void btnAddProductOnAction(ActionEvent actionEvent) {
+        String id = txtSearch.getText();
+        String name = txtProductName.getText();
+        String nickName = txtNickName.getText();
+        int price = Integer.parseInt(txtProductPrice.getText());
+        int discount = Integer.parseInt(txtDiscount.getText());
+        int availableQty = Integer.parseInt(txtAvailableQuantity.getText());
+        int orderQty = Integer.parseInt(txtOrderQuantity.getText());
 
+        AllProductDetails.add(new ProductTm(id,name,nickName,price,discount,availableQty,orderQty));
+
+        clearTextField();
+        loadTableData();
 
     }
 
+    private void clearTextField() {
+        txtSearch.clear();
+        txtProductName.clear();
+        txtNickName.clear();
+        txtDiscount.clear();
+        txtOrderQuantity.clear();
+        txtAvailableQuantity.clear();
+        txtProductPrice.clear();
+    }
+
+    private void loadTableData() {
+
+    }
 
     public void searchOnKeyPressed(KeyEvent keyEvent) {
-
+        if (keyEvent.getCode() == KeyCode.ENTER) {
+            try {
+                ProductDTO search = productBO.search(txtSearch.getText());
+                if (search!=null){
+                  txtProductName.setText(search.getProductName());
+                  txtNickName.setText(search.getNickName());
+                  txtProductPrice.setText(String.valueOf(search.getCost()));
+                  txtAvailableQuantity.setText(String.valueOf(search.getQty()));
+                }else {
+                    new Alert(Alert.AlertType.ERROR,"Empty Result..!").show();
+                }
+            } catch (SQLException | ClassNotFoundException e) {
+                throw new RuntimeException(e);
+            }
+        }
     }
     
     public void btnCancelOnAction(ActionEvent actionEvent) {
