@@ -15,6 +15,12 @@ public class ProductBOImpl implements ProductBO {
     }
 
     @Override
+    public ArrayList<ProductDTO> getAllByName(String name,String nickName) throws SQLException, ClassNotFoundException {
+        ProductDAOImpl productDAO = new ProductDAOImpl();
+        return productDAO.getAllByName(name, nickName);
+    }
+
+    @Override
     public boolean Save(ProductDTO dto) throws SQLException, ClassNotFoundException {
         ProductDAOImpl productDAO = new ProductDAOImpl();
         return productDAO.Save(dto);

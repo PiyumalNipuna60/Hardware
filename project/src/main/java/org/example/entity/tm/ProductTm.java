@@ -1,5 +1,6 @@
 package org.example.entity.tm;
 
+import com.jfoenix.controls.JFXButton;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -20,4 +21,5 @@ public class ProductTm {
     int discount;
     int qty;
     int orderQty;
+
 }

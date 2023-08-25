@@ -14,13 +14,14 @@ public class DashBoardFormController {
     }
 
     public void btnDisplayStockOnAction(ActionEvent actionEvent) {
-        setUi("PlaceOrderForm");
+        setUi("DisplayStockForm");
     }
 
     public void btnPlaceInvoiceOnAction(ActionEvent actionEvent) {
     }
 
     public void btnPlaceOrderOnAction(ActionEvent actionEvent) {
+        setUi("PlaceOrderForm");
     }
 
     public void setUi(String url){
