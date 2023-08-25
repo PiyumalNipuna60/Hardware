@@ -1,4 +1,6 @@
 CREATE DATABASE IF NOT EXISTS Hardware;
+use Hardware;
+
 CREATE TABLE User
 (
     userName VARCHAR(10),
@@ -72,5 +74,7 @@ CREATE TABLE OrderDetails
     CONSTRAINT FOREIGN KEY (orderId) REFERENCES Orders (orderId)
         ON DELETE CASCADE ON UPDATE CASCADE
 );
+
+insert into product values('P001','bata','ba','ever','250','8','2023-08-23');
 
 
