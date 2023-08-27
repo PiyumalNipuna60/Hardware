@@ -28,6 +28,23 @@ public class ProductDAOImpl implements ProductDAO {
         return AllProduct;
     }
 
+    public ArrayList<ProductDTO> getAllByName(String name,String nickName) throws SQLException, ClassNotFoundException {
+        ArrayList<ProductDTO> AllProduct = new ArrayList<>();
+        ResultSet resultSet = SqlUtil.executeQuery("SELECT * FROM Product where productName=? || nickName=?",name,nickName);
+        while (resultSet.next()) {
+            AllProduct.add(
+                    new ProductDTO(
+                            resultSet.getString(1),
+                            resultSet.getString(2),
+                            resultSet.getString(3),
+                            resultSet.getString(4),
+                            resultSet.getInt(5),
+                            resultSet.getInt(6),
+                            resultSet.getDate(7)));
+        }
+        return AllProduct;
+    }
+
     @Override
     public boolean Save(ProductDTO dto) throws SQLException, ClassNotFoundException {
         return  SqlUtil.executeUpdate("insert into Product values(?,?,?,?,?,?,?)",

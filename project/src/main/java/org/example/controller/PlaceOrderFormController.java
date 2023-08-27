@@ -16,7 +16,7 @@ import java.util.ArrayList;
 public class PlaceOrderFormController {
     public static ProductBOImpl productBO = new ProductBOImpl();
     ArrayList<Object> AllProductDetails = new ArrayList<>();
-
+    
 
     public TextField txtOrderQuantity;
     public TextField txtAvailableQuantity;
@@ -40,7 +40,7 @@ public class PlaceOrderFormController {
         int availableQty = Integer.parseInt(txtAvailableQuantity.getText());
         int orderQty = Integer.parseInt(txtOrderQuantity.getText());
 
-        AllProductDetails.add(new ProductTm(id, name, nickName, price, discount, availableQty, orderQty));
+        AllProductDetails.add(new ProductTm(id,name,nickName,price,discount,availableQty,orderQty));
 
         clearTextField();
         loadTableData();
@@ -61,35 +61,26 @@ public class PlaceOrderFormController {
 
     }
 
-    private void removeTableData() {
-        for (int i = 0; i < AllProductDetails.size(); i++) {
-            AllProductDetails.remove(i);
-        }
-    }
-
     public void searchOnKeyPressed(KeyEvent keyEvent) {
         if (keyEvent.getCode() == KeyCode.ENTER) {
             try {
                 ProductDTO search = productBO.search(txtSearch.getText());
-                if (search != null) {
-                    txtProductName.setText(search.getProductName());
-                    txtNickName.setText(search.getNickName());
-                    txtProductPrice.setText(String.valueOf(search.getCost()));
-                    txtAvailableQuantity.setText(String.valueOf(search.getQty()));
-                } else {
-                    new Alert(Alert.AlertType.ERROR, "Empty Result..!").show();
+                if (search!=null){
+                  txtProductName.setText(search.getProductName());
+                  txtNickName.setText(search.getNickName());
+                  txtProductPrice.setText(String.valueOf(search.getCost()));
+                  txtAvailableQuantity.setText(String.valueOf(search.getQty()));
+                }else {
+                    new Alert(Alert.AlertType.ERROR,"Empty Result..!").show();
                 }
             } catch (SQLException | ClassNotFoundException e) {
                 throw new RuntimeException(e);
             }
         }
     }
-
+    
     public void btnCancelOnAction(ActionEvent actionEvent) {
-        clearTextField();
-        removeTableData();
+
     }
-
+    
 }
-
-// load table ekai, place oprder ekai

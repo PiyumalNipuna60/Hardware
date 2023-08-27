@@ -6,20 +6,16 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-import java.util.Date;
-
 @AllArgsConstructor
 @Data
 @NoArgsConstructor
 @ToString
-public class ProductTm {
+public class PlaceOrderTm {
+    int id;
     String productId;
     String productName;
     String nickName;
     int cost;
-
     int discount;
     int qty;
-    int orderQty;
-
 }

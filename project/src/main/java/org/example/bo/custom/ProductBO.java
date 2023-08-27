@@ -9,6 +9,8 @@ import java.util.ArrayList;
 public interface ProductBO extends SuperBO {
     public ArrayList<ProductDTO> getAll() throws SQLException, ClassNotFoundException;
 
+    public ArrayList<ProductDTO> getAllByName(String name,String nickName) throws SQLException, ClassNotFoundException;
+
     public boolean Save(ProductDTO dto) throws SQLException, ClassNotFoundException;
 
     public boolean update(ProductDTO dto) throws SQLException, ClassNotFoundException;
