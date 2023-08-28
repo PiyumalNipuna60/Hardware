@@ -65,19 +65,14 @@ public class PlaceOrderFormController {
 
         tblOrder.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, selectedOrderDetail) -> {
 
-            if (selectedOrderDetail == null) {
+            if (selectedOrderDetail != null) {
                 btnAdd.setText("Update PRODUCT");
                 SetUpdateData((PlaceOrderTm) selectedOrderDetail);
             } else {
                 btnAdd.setText("ADD PRODUCT");
                 clearTextField();
             }
-
         });
-    }
-
-    private void UpdateOrderProduct(int ID) {
-
     }
 
     private void SetUpdateData(PlaceOrderTm pm) {
@@ -144,7 +139,6 @@ public class PlaceOrderFormController {
                 clearTextField();
             }
         }
-
     }
 
     private void clearTextField() {
