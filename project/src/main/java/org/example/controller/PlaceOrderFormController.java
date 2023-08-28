@@ -10,7 +10,6 @@ import javafx.scene.layout.Pane;
 import org.example.bo.custom.impl.ProductBOImpl;
 import org.example.dto.ProductDTO;
 import org.example.entity.tm.PlaceOrderTm;
-import org.example.entity.tm.ProductTm;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -26,6 +25,8 @@ public class PlaceOrderFormController {
     public TableColumn colQty;
     public TableColumn colOption;
     public TableColumn colID;
+    public Button btnAdd;
+    public Label lblCount;
     ArrayList<PlaceOrderTm> AllProductDetails = new ArrayList<>();
 
 
@@ -39,6 +40,9 @@ public class PlaceOrderFormController {
     public TextField txtSearch;
 
     public void initialize() throws SQLException, ClassNotFoundException {
+
+        lblCount.setText("1");
+
         colID.setCellValueFactory(new PropertyValueFactory<>("id"));
         colProductId.setCellValueFactory(new PropertyValueFactory<>("productId"));
         colPName.setCellValueFactory(new PropertyValueFactory<>("productName"));
@@ -58,6 +62,40 @@ public class PlaceOrderFormController {
             return new ReadOnlyObjectWrapper<>(btnDelete);
         });
         loadAllOrder();
+
+        tblOrder.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, selectedOrderDetail) -> {
+
+            if (selectedOrderDetail == null) {
+                btnAdd.setText("Update PRODUCT");
+                SetUpdateData((PlaceOrderTm) selectedOrderDetail);
+            } else {
+                btnAdd.setText("ADD PRODUCT");
+                clearTextField();
+            }
+
+        });
+    }
+
+    private void UpdateOrderProduct(int ID) {
+
+    }
+
+    private void SetUpdateData(PlaceOrderTm pm) {
+
+        ProductDTO search;
+        try {
+            search = productBO.search(pm.getProductId());
+        } catch (SQLException | ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+        lblCount.setText(String.valueOf(pm.getId()));
+        txtSearch.setText(pm.getProductId());
+        txtProductName.setText(pm.getProductName());
+        txtNickName.setText(pm.getNickName());
+        txtProductPrice.setText(String.valueOf(pm.getCost()));
+        txtDiscount.setText(String.valueOf(pm.getDiscount()));
+        txtAvailableQuantity.setText(String.valueOf(search.getQty()));
+        txtOrderQuantity.setText(String.valueOf(pm.getQty()));
     }
 
 
@@ -82,21 +120,29 @@ public class PlaceOrderFormController {
     }
 
     public void btnAddProductOnAction(ActionEvent actionEvent) {
-        if (txtSearch.equals("") || txtDiscount.equals("") || txtOrderQuantity.equals("")) {
+        if (txtDiscount.getText().equals("") || txtSearch.getText().equals("") || txtOrderQuantity.getText().equals("") || txtProductPrice.getText().equals("")) {
             new Alert(Alert.AlertType.ERROR, "Add Complete Data").show();
         } else {
-            String id = txtSearch.getText();
-            String name = txtProductName.getText();
-            String nickName = txtNickName.getText();
-            int price = Integer.parseInt(txtProductPrice.getText());
-            int discount = Integer.parseInt(txtDiscount.getText());
-            int availableQty = Integer.parseInt(txtAvailableQuantity.getText());
-            int orderQty = Integer.parseInt(txtOrderQuantity.getText());
+            if (btnAdd.getText().equals("ADD PRODUCT")) {
+                String id = txtSearch.getText();
+                String name = txtProductName.getText();
+                String nickName = txtNickName.getText();
+                int price = Integer.parseInt(txtProductPrice.getText());
+                int discount = Integer.parseInt(txtDiscount.getText());
+                int availableQty = Integer.parseInt(txtAvailableQuantity.getText());
+                int orderQty = Integer.parseInt(txtOrderQuantity.getText());
 
-            AllProductDetails.add(new PlaceOrderTm(AllProductDetails.size(), id, name, nickName, price, discount, orderQty));
+                AllProductDetails.add(new PlaceOrderTm(AllProductDetails.size() + 1, id, name, nickName, price, discount, orderQty));
 
-            clearTextField();
-            loadAllOrder();
+                clearTextField();
+                loadAllOrder();
+            } else {
+                int id = Integer.parseInt(lblCount.getText());
+                AllProductDetails.set(id - 1, new PlaceOrderTm(id, txtSearch.getText(), txtProductName.getText(), txtNickName.getText(),
+                        Integer.parseInt(txtProductPrice.getText()), Integer.parseInt(txtDiscount.getText()), Integer.parseInt(txtOrderQuantity.getText())));
+                loadAllOrder();
+                clearTextField();
+            }
         }
 
     }
@@ -133,6 +179,7 @@ public class PlaceOrderFormController {
     public void btnCancelOnAction(ActionEvent actionEvent) {
         clearTextField();
         removeDataArray();
+        loadAllOrder();
     }
 
     private void removeDataArray() {
