@@ -17,7 +17,7 @@
                <children>
                   <TableView fx:id="tblOrder" layoutX="14.0" layoutY="7.0" prefHeight="412.0" prefWidth="1173.0" stylesheets="@../assets/css/PlaceOrder.css">
                     <columns>
-                      <TableColumn fx:id="ID" prefWidth="64.0" text="ID" />
+                      <TableColumn fx:id="colID" prefWidth="64.0" text="ID" />
                       <TableColumn fx:id="colProductId" prefWidth="157.0" text="Product ID" />
                         <TableColumn fx:id="colPName" prefWidth="213.0" text="Product Name" />
                         <TableColumn fx:id="colNickName" prefWidth="194.0" text="Nick Name" />
