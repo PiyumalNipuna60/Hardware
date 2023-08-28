@@ -11,6 +11,7 @@ public class DashBoardFormController {
 
     public void initialize(){
         setUi("PlaceOrderForm");
+
     }
 
     public void btnDisplayStockOnAction(ActionEvent actionEvent) {
