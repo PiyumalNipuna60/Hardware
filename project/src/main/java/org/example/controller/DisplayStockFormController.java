@@ -44,6 +44,7 @@ public class DisplayStockFormController {
     public TableColumn colOption;
 
     public void initialize() {
+        generateRealTime();
         colProductId.setCellValueFactory(new PropertyValueFactory("productId"));
         colProductName.setCellValueFactory(new PropertyValueFactory("productName"));
         colNickName.setCellValueFactory(new PropertyValueFactory("nickName"));
@@ -114,7 +115,7 @@ public class DisplayStockFormController {
     private void generateRealTime() {
         lblDate.setText(LocalDate.now().toString());
         Timeline timeline = new Timeline(new KeyFrame(javafx.util.Duration.ZERO, e -> {
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("hh:mm:ss a");
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("hh:mm");
             lblTime.setText(LocalDateTime.now().format(formatter));
         }), new KeyFrame(Duration.seconds(1)));
         timeline.setCycleCount(Animation.INDEFINITE);

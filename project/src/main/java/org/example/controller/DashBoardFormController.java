@@ -14,7 +14,7 @@ public class DashBoardFormController {
     }
 
     public void btnDisplayStockOnAction(ActionEvent actionEvent) {
-        setUi("DashBoardForm");
+        setUi("DisplayStockForm");
     }
 
     public void btnPlaceInvoiceOnAction(ActionEvent actionEvent) {
