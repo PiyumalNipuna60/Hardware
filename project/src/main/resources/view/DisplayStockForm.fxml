@@ -19,10 +19,11 @@
                       <TableColumn fx:id="colProductId" prefWidth="95.00003051757812" text="ProductId" />
                       <TableColumn fx:id="colProductName" prefWidth="161.0" text="ProductName" />
                         <TableColumn fx:id="colNickName" prefWidth="190.0" text="NickName" />
-                        <TableColumn fx:id="colState" prefWidth="287.0" text="State" />
-                        <TableColumn fx:id="colCost" prefWidth="151.0" text="Cost" />
-                        <TableColumn fx:id="colQty" prefWidth="118.0" text="QTY" />
-                        <TableColumn fx:id="colAddedDate" prefWidth="183.0" text="AddedDate" />
+                        <TableColumn fx:id="colState" prefWidth="238.0" text="State" />
+                        <TableColumn fx:id="colCost" prefWidth="121.0" text="Cost" />
+                        <TableColumn fx:id="colQty" prefWidth="96.0" text="QTY" />
+                        <TableColumn fx:id="colAddedDate" prefWidth="179.0" text="AddedDate" />
+                        <TableColumn fx:id="colOption" prefWidth="104.0" text="Option" />
                     </columns>
                   </TableView>
                </children></Pane>
