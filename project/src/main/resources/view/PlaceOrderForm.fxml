@@ -17,7 +17,7 @@
                <children>
                   <TableView fx:id="tblOrder" layoutX="14.0" layoutY="7.0" prefHeight="412.0" prefWidth="1173.0" stylesheets="@../assets/css/PlaceOrder.css">
                     <columns>
-                      <TableColumn fx:id="ID" prefWidth="64.0" text="ID" />
+                      <TableColumn fx:id="colID" prefWidth="64.0" text="ID" />
                       <TableColumn fx:id="colProductId" prefWidth="157.0" text="Product ID" />
                         <TableColumn fx:id="colPName" prefWidth="213.0" text="Product Name" />
                         <TableColumn fx:id="colNickName" prefWidth="194.0" text="Nick Name" />
@@ -127,11 +127,12 @@
                   </Label>
                </children>
             </Pane>
-            <Button layoutX="891.0" layoutY="279.0" mnemonicParsing="false" onAction="#btnAddProductOnAction" prefHeight="52.0" prefWidth="233.0" styleClass="btn1" stylesheets="@../assets/css/colorCss.css" text="ADD PRODUCT">
+            <Button fx:id="btnAdd" layoutX="891.0" layoutY="279.0" mnemonicParsing="false" onAction="#btnAddProductOnAction" prefHeight="52.0" prefWidth="233.0" styleClass="btn1" stylesheets="@../assets/css/colorCss.css" text="ADD PRODUCT">
                <font>
                   <Font name="System Bold" size="26.0" />
                </font>
             </Button>
+            <Label fx:id="lblCount" layoutX="14.0" layoutY="14.0" text="00" />
          </children>
       </Pane>
    </children>
