@@ -17,6 +17,7 @@ CREATE TABLE Customer
 (
     cusId   VARCHAR(10) PRIMARY KEY,
     cusName VARCHAR(10),
+    address VARCHAR(10),
     contact VARCHAR(10)
 );
 
