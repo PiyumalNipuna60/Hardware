@@ -21,6 +21,15 @@ CREATE TABLE Customer
     contact VARCHAR(10)
 );
 
+CREATE TABLE Employee
+(
+    empId   VARCHAR(10) PRIMARY KEY,
+    empName VARCHAR(10),
+    address VARCHAR(10),
+    contact VARCHAR(10),
+    salary VARCHAR(10)
+);
+
 CREATE TABLE Invoice
 (
     invoiceId     VARCHAR(10) PRIMARY KEY,
