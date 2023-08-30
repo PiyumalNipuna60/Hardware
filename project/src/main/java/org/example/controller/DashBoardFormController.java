@@ -19,6 +19,7 @@ public class DashBoardFormController {
     }
 
     public void btnPlaceInvoiceOnAction(ActionEvent actionEvent) {
+        setUi("CustomerForm");
     }
 
     public void btnPlaceOrderOnAction(ActionEvent actionEvent) {
