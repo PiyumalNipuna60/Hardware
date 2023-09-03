@@ -11,23 +11,23 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controller.EmployeeFormController">
+<AnchorPane xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controller.CustomerFormController">
    <children>
       <Pane fx:id="mainPane" layoutY="-7.0" prefHeight="857.0" prefWidth="1244.0" style="-fx-background-color: white; -fx-background-radius: 20;">
          <children>
-            <Pane layoutX="22.0" layoutY="219.0" prefHeight="564.0" prefWidth="461.0" style="-fx-background-color: white; -fx-border-radius: 10; -fx-background-radius: 10; -fx-border-color: gray;">
+            <Pane layoutX="22.0" layoutY="238.0" prefHeight="501.0" prefWidth="461.0" style="-fx-background-color: white; -fx-border-radius: 10; -fx-background-radius: 10; -fx-border-color: gray;">
                <effect>
                   <DropShadow blurType="TWO_PASS_BOX" height="37.9" offsetX="1.0" offsetY="1.0" radius="15.195" width="24.88" />
                </effect>
                <children>
                   <Pane layoutX="64.0" layoutY="53.0" prefHeight="65.0" prefWidth="332.0">
                      <children>
-                        <TextField fx:id="txtEmployeeID" layoutX="13.0" layoutY="17.0"  prefHeight="42.0" prefWidth="295.0" promptText="E001" style="-fx-background-color: #D2D2D2; -fx-background-radius: 6;">
+                        <TextField fx:id="txtCCustomerID" layoutX="13.0" layoutY="17.0" prefHeight="42.0" prefWidth="295.0" promptText="C001" style="-fx-background-color: #D2D2D2; -fx-background-radius: 6;">
                            <font>
                               <Font name="Arial" size="21.0" />
                            </font>
                         </TextField>
-                        <Label layoutX="18.0" layoutY="-6.0" text="Employee ID">
+                        <Label layoutX="18.0" layoutY="-6.0" text="Customer ID">
                            <font>
                               <Font name="System Bold" size="16.0" />
                            </font>
@@ -36,12 +36,12 @@
                   </Pane>
                   <Pane layoutX="65.0" layoutY="146.0" prefHeight="65.0" prefWidth="332.0">
                      <children>
-                        <TextField fx:id="txtEmployeeName" layoutX="13.0" layoutY="17.0" prefHeight="42.0" prefWidth="295.0" promptText="name" style="-fx-background-color: #D2D2D2; -fx-background-radius: 6;">
+                        <TextField fx:id="txtCustomerName" layoutX="13.0" layoutY="17.0" prefHeight="42.0" prefWidth="295.0" promptText="name" style="-fx-background-color: #D2D2D2; -fx-background-radius: 6;">
                            <font>
                               <Font name="Arial" size="21.0" />
                            </font>
                         </TextField>
-                        <Label layoutX="18.0" layoutY="-6.0" text="Employee Name">
+                        <Label layoutX="18.0" layoutY="-6.0" text="Customer Name">
                            <font>
                               <Font name="System Bold" size="16.0" />
                            </font>
@@ -50,12 +50,12 @@
                   </Pane>
                   <Pane layoutX="65.0" layoutY="230.0" prefHeight="65.0" prefWidth="332.0">
                      <children>
-                        <TextField fx:id="txtAddressAddress" layoutX="13.0" layoutY="17.0" prefHeight="42.0" prefWidth="295.0" promptText="address" style="-fx-background-color: #D2D2D2; -fx-background-radius: 6;">
+                        <TextField fx:id="txtCustomerAddress" layoutX="13.0" layoutY="17.0" prefHeight="42.0" prefWidth="295.0" promptText="address" style="-fx-background-color: #D2D2D2; -fx-background-radius: 6;">
                            <font>
                               <Font name="Arial" size="21.0" />
                            </font>
                         </TextField>
-                        <Label layoutX="18.0" layoutY="-6.0" text="Employee Address">
+                        <Label layoutX="18.0" layoutY="-6.0" text="Customer Address">
                            <font>
                               <Font name="System Bold" size="16.0" />
                            </font>
@@ -64,59 +64,44 @@
                   </Pane>
                   <Pane layoutX="65.0" layoutY="307.0" prefHeight="65.0" prefWidth="332.0">
                      <children>
-                        <TextField fx:id="txtEmployeeContact" layoutX="13.0" layoutY="17.0" prefHeight="42.0" prefWidth="295.0" promptText="07*-*******" style="-fx-background-color: #D2D2D2; -fx-background-radius: 6;">
+                        <TextField fx:id="txtCustomerContact" layoutX="13.0" layoutY="17.0" prefHeight="42.0" prefWidth="295.0" promptText="0000.00" style="-fx-background-color: #D2D2D2; -fx-background-radius: 6;">
                            <font>
                               <Font name="Arial" size="21.0" />
                            </font>
                         </TextField>
-                        <Label layoutX="18.0" layoutY="-6.0" text="Employee Contact">
+                        <Label layoutX="18.0" layoutY="-6.0" text="Customer Contact">
                            <font>
                               <Font name="System Bold" size="16.0" />
                            </font>
                         </Label>
                      </children>
                   </Pane>
-                  <Button fx:id="btnAdd" layoutX="18.0" layoutY="485.0" mnemonicParsing="false" onAction="#btnSaveEmployeeOnAction" prefHeight="25.0" prefWidth="135.0" styleClass="btn1" stylesheets="@../assets/css/colorCss.css" text="Save">
+                  <Button fx:id="btnAdd" layoutX="18.0" layoutY="414.0" mnemonicParsing="false" onAction="#btnSaveCustomerOnAction" prefHeight="25.0" prefWidth="135.0" styleClass="btn1" stylesheets="@../assets/css/colorCss.css" text="Save">
                      <font>
                         <Font name="System Bold" size="20.0" />
                      </font>
                   </Button>
-                  <Button fx:id="btnDelete" layoutX="308.0" layoutY="485.0" mnemonicParsing="false" onAction="#btnDeleteEmployeeOnAction" prefHeight="25.0" prefWidth="135.0" styleClass="btn3" stylesheets="@../assets/css/colorCss.css" text="Delete">
+                  <Button fx:id="btnDelete" layoutX="308.0" layoutY="414.0" mnemonicParsing="false" onAction="#btnDeleteCustomerOnAction" prefHeight="25.0" prefWidth="135.0" styleClass="btn3" stylesheets="@../assets/css/colorCss.css" text="Delete">
                      <font>
                         <Font name="System Bold" size="20.0" />
                      </font>
                   </Button>
-                  <Button fx:id="btnUpdate" layoutX="163.0" layoutY="485.0" mnemonicParsing="false" onAction="#btnUpdateEmployeeOnAction" prefHeight="25.0" prefWidth="135.0" styleClass="btn2" stylesheets="@../assets/css/colorCss.css" text="Update">
+                  <Button fx:id="btnUpdate" layoutX="163.0" layoutY="414.0" mnemonicParsing="false" onAction="#btnUpdateCustomerOnAction" prefHeight="25.0" prefWidth="135.0" styleClass="btn2" stylesheets="@../assets/css/colorCss.css" text="Update">
                      <font>
                         <Font name="System Bold" size="20.0" />
                      </font>
                   </Button>
-                  <Pane layoutX="66.0" layoutY="388.0" prefHeight="65.0" prefWidth="332.0">
-                     <children>
-                        <TextField fx:id="txtSalaryContact1" layoutX="13.0" layoutY="17.0" prefHeight="42.0" prefWidth="295.0" promptText="0000.00" style="-fx-background-color: #D2D2D2; -fx-background-radius: 6;">
-                           <font>
-                              <Font name="Arial" size="21.0" />
-                           </font>
-                        </TextField>
-                        <Label layoutX="18.0" layoutY="-6.0" text="Employee Salary">
-                           <font>
-                              <Font name="System Bold" size="16.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </Pane>
                </children>
             </Pane>
             <Pane layoutX="503.0" layoutY="38.0" prefHeight="793.0" prefWidth="729.0" style="-fx-background-color: #E5E1E1; -fx-background-radius: 16;">
                <children>
-                  <TableView fx:id="tblEmployee" layoutX="8.0" layoutY="6.0" prefHeight="782.0" prefWidth="713.0" stylesheets="@../assets/css/PlaceOrder.css">
+                  <TableView fx:id="tblCustomer" layoutX="8.0" layoutY="6.0" prefHeight="782.0" prefWidth="713.0" stylesheets="@../assets/css/PlaceOrder.css">
                     <columns>
-                      <TableColumn fx:id="colID" prefWidth="109.0" text="Customer ID" />
-                      <TableColumn fx:id="colName" prefWidth="124.0" text="Customer Name" />
-                        <TableColumn fx:id="colAddress" prefWidth="136.0" text="Customer Address" />
-                        <TableColumn fx:id="colContact" prefWidth="137.0" text="Customer Contact" />
-                        <TableColumn fx:id="colSalary" prefWidth="119.0" text="Salary" />
-                        <TableColumn fx:id="colOption" prefWidth="87.0" text="Option" />
+                      <TableColumn fx:id="colID" prefWidth="110.0" text="Customer ID" />
+                      <TableColumn fx:id="colName" prefWidth="157.0" text="Customer Name" />
+                        <TableColumn fx:id="colAddress" prefWidth="189.0" text="Customer Address" />
+                        <TableColumn fx:id="colContact" prefWidth="163.0" text="Customer Contact" />
+                        <TableColumn fx:id="colOption" prefWidth="93.0" text="Option" />
                     </columns>
                   </TableView>
                </children>
