@@ -1,21 +1,41 @@
 package org.example.controller;
 
+import javafx.animation.Animation;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.BorderImage;
 import javafx.scene.layout.Pane;
+import javafx.util.Duration;
+import org.example.bo.custom.impl.OrderBOImpl;
+import org.example.bo.custom.impl.OrderDetailsBOImpl;
 import org.example.bo.custom.impl.ProductBOImpl;
+import org.example.dto.OrderDTO;
+import org.example.dto.OrderDetailsDTO;
 import org.example.dto.ProductDTO;
 import org.example.entity.tm.PlaceOrderTm;
+import sun.util.calendar.LocalGregorianCalendar;
 
+import java.sql.Date;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 public class PlaceOrderFormController {
     public static ProductBOImpl productBO = new ProductBOImpl();
+    public Label lblOrderCount;
+    public Label lblDate;
+
+    OrderBOImpl orderBO = new OrderBOImpl();
+
+    private final OrderDetailsBOImpl orderDetailsBO = new OrderDetailsBOImpl();
     public TableView tblOrder;
     public TableColumn colProductId;
     public TableColumn colPName;
@@ -26,7 +46,7 @@ public class PlaceOrderFormController {
     public TableColumn colOption;
     public TableColumn colID;
     public Button btnAdd;
-    public Label lblCount;
+
     ArrayList<PlaceOrderTm> AllProductDetails = new ArrayList<>();
 
 
@@ -41,7 +61,9 @@ public class PlaceOrderFormController {
 
     public void initialize() throws SQLException, ClassNotFoundException {
 
-        lblCount.setText("1");
+        generateRealTime();
+        updateOrderNumber();
+
 
         colID.setCellValueFactory(new PropertyValueFactory<>("id"));
         colProductId.setCellValueFactory(new PropertyValueFactory<>("productId"));
@@ -83,7 +105,7 @@ public class PlaceOrderFormController {
         } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
-        lblCount.setText(String.valueOf(pm.getId()));
+        lblOrderCount.setText(String.valueOf(pm.getId()));
         txtSearch.setText(pm.getProductId());
         txtProductName.setText(pm.getProductName());
         txtNickName.setText(pm.getNickName());
@@ -110,9 +132,42 @@ public class PlaceOrderFormController {
         }
     }
 
-    public void btnPlaceOrderOnAction(ActionEvent actionEvent) {
 
+    /*------------------------transaction ekak gahanna one-------------------------*/
+    public void btnPlaceOrderOnAction(ActionEvent actionEvent) {
+        String OrderId = lblOrderCount.getText();
+        for (int i = 0; i < AllProductDetails.size(); i++) {
+            String id = String.valueOf(AllProductDetails.get(i).getId());
+            String productId = AllProductDetails.get(i).getProductId();
+            String discount = String.valueOf(AllProductDetails.get(i).getDiscount());
+            int qty = AllProductDetails.get(i).getQty();
+
+            try {
+                System.out.println(OrderId);
+                if (orderDetailsBO.Save(new OrderDetailsDTO(productId,OrderId,discount,qty))){
+                    System.out.println("ok");
+                }
+            } catch (SQLException | ClassNotFoundException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        removeDataArray();
+        loadAllOrder();
+        updateOrderNumber();
     }
+
+    private void updateOrderNumber(){
+        try {
+            ArrayList<OrderDTO> all = orderBO.getAll();
+            String size = "O00" + String.valueOf(all.size() + 1);
+
+            orderBO.Save(new OrderDTO(size,0,Date.valueOf(lblDate.getText()),0));
+            lblOrderCount.setText(size);
+        } catch (SQLException | ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 
     public void btnAddProductOnAction(ActionEvent actionEvent) {
         if (txtDiscount.getText().equals("") || txtSearch.getText().equals("") || txtOrderQuantity.getText().equals("") || txtProductPrice.getText().equals("")) {
@@ -132,7 +187,7 @@ public class PlaceOrderFormController {
                 clearTextField();
                 loadAllOrder();
             } else {
-                int id = Integer.parseInt(lblCount.getText());
+                int id = Integer.parseInt(lblOrderCount.getText());
                 AllProductDetails.set(id - 1, new PlaceOrderTm(id, txtSearch.getText(), txtProductName.getText(), txtNickName.getText(),
                         Integer.parseInt(txtProductPrice.getText()), Integer.parseInt(txtDiscount.getText()), Integer.parseInt(txtOrderQuantity.getText())));
                 loadAllOrder();
@@ -180,6 +235,17 @@ public class PlaceOrderFormController {
         for (int i = 0; i < AllProductDetails.size(); i++) {
             AllProductDetails.remove(i);
         }
+    }
+
+    /*-----DATE AND TIME GENERATE------*/
+    private void generateRealTime() {
+        lblDate.setText(LocalDate.now().toString());
+        Timeline timeline = new Timeline(new KeyFrame(javafx.util.Duration.ZERO, e -> {
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("hh:mm");
+//            lblTime.setText(LocalDateTime.now().format(formatter));
+        }), new KeyFrame(Duration.seconds(1)));
+        timeline.setCycleCount(Animation.INDEFINITE);
+        timeline.play();
     }
 
 }

@@ -46,4 +46,5 @@ public class OrderDetailsBOImpl implements OrderDetailsBO {
     public String generateNewId() throws SQLException, ClassNotFoundException {
         return orderDAO.generateNewId();
     }
+
 }

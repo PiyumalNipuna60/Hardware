@@ -30,8 +30,8 @@ public class OrderDetailsDAOImpl implements OrderDetailsDAO {
     @Override
     public boolean Save(OrderDetailsDTO dto) throws SQLException, ClassNotFoundException {
         return SqlUtil.executeUpdate("insert into OrderDetails values(?,?,?,?)",
-                dto.getOrderId(),
                 dto.getProductId(),
+                dto.getOrderId(),
                 dto.getDiscount(),
                 dto.getQtyOnHand());
     }

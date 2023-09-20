@@ -12,6 +12,7 @@ import lombok.ToString;
 public class OrderDetailsDTO {
     String productId;
     String orderId;
+
     String discount;
     int qtyOnHand;
 }
