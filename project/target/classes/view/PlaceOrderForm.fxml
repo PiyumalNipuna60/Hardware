@@ -11,11 +11,11 @@
 
 <AnchorPane xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controller.PlaceOrderFormController">
    <children>
-      <Pane fx:id="mainPane" prefHeight="857.0" prefWidth="1244.0" style="-fx-background-color: white; -fx-background-radius: 20;">
+      <Pane fx:id="mainPane" layoutY="3.0" prefHeight="857.0" prefWidth="1244.0" style="-fx-background-color: white; -fx-background-radius: 20;">
          <children>
             <Pane layoutX="25.0" layoutY="367.0" prefHeight="412.0" prefWidth="1201.0" style="-fx-background-color: #E5E1E1; -fx-background-radius: 16;">
                <children>
-                  <TableView fx:id="tblOrder" layoutX="14.0" layoutY="7.0" prefHeight="412.0" prefWidth="1173.0" stylesheets="@../assets/css/PlaceOrder.css">
+                  <TableView fx:id="tblOrder" layoutX="14.0" layoutY="7.0" prefHeight="398.0" prefWidth="1173.0" stylesheets="@../assets/css/PlaceOrder.css">
                     <columns>
                       <TableColumn fx:id="colID" prefWidth="64.0" text="ID" />
                       <TableColumn fx:id="colProductId" prefWidth="157.0" text="Product ID" />
@@ -38,12 +38,12 @@
                   <Font name="System Bold" size="26.0" />
                </font>
             </Button>
-            <TextField fx:id="txtSearch" layoutX="79.0" layoutY="34.0" onKeyPressed="#searchOnKeyPressed" prefHeight="56.0" prefWidth="744.0" promptText="search product" style="-fx-background-color: #D2D2D2; -fx-background-radius: 6;">
+            <TextField fx:id="txtSearch" layoutX="79.0" layoutY="70.0" onKeyPressed="#searchOnKeyPressed" prefHeight="45.0" prefWidth="744.0" promptText="search product" style="-fx-background-color: #D2D2D2; -fx-background-radius: 6;">
                <font>
                   <Font name="Arial" size="21.0" />
                </font>
             </TextField>
-            <Pane layoutX="71.0" layoutY="108.0" prefHeight="65.0" prefWidth="698.0">
+            <Pane layoutX="71.0" layoutY="128.0" prefHeight="65.0" prefWidth="698.0">
                <children>
                   <TextField fx:id="txtProductName" layoutX="13.0" layoutY="17.0" prefHeight="45.0" prefWidth="662.0" style="-fx-background-color: #D2D2D2; -fx-background-radius: 6;">
                      <font>
@@ -57,7 +57,7 @@
                   </Label>
                </children>
             </Pane>
-            <Pane layoutX="72.0" layoutY="194.0" prefHeight="65.0" prefWidth="696.0">
+            <Pane layoutX="72.0" layoutY="204.0" prefHeight="65.0" prefWidth="696.0">
                <children>
                   <TextField fx:id="txtNickName" layoutX="13.0" layoutY="17.0" prefHeight="45.0" prefWidth="659.0" style="-fx-background-color: #D2D2D2; -fx-background-radius: 6;">
                      <font>
@@ -71,7 +71,7 @@
                   </Label>
                </children>
             </Pane>
-            <Pane layoutX="75.0" layoutY="280.0" prefHeight="65.0" prefWidth="332.0">
+            <Pane layoutX="75.0" layoutY="287.0" prefHeight="65.0" prefWidth="332.0">
                <children>
                   <TextField fx:id="txtProductPrice" layoutX="13.0" layoutY="17.0" prefHeight="42.0" prefWidth="295.0" style="-fx-background-color: #D2D2D2; -fx-background-radius: 6;">
                      <font>
@@ -85,7 +85,7 @@
                   </Label>
                </children>
             </Pane>
-            <Pane layoutX="433.0" layoutY="283.0" prefHeight="65.0" prefWidth="332.0">
+            <Pane layoutX="433.0" layoutY="290.0" prefHeight="65.0" prefWidth="332.0">
                <children>
                   <TextField fx:id="txtDiscount" layoutX="13.0" layoutY="17.0" prefHeight="42.0" prefWidth="295.0" style="-fx-background-color: #D2D2D2; -fx-background-radius: 6;">
                      <font>
@@ -127,12 +127,21 @@
                   </Label>
                </children>
             </Pane>
-            <Button fx:id="btnAdd" layoutX="891.0" layoutY="279.0" mnemonicParsing="false" onAction="#btnAddProductOnAction" prefHeight="52.0" prefWidth="233.0" styleClass="btn1" stylesheets="@../assets/css/colorCss.css" text="ADD PRODUCT">
+            <Button fx:id="btnAdd" layoutX="891.0" layoutY="284.0" mnemonicParsing="false" onAction="#btnAddProductOnAction" prefHeight="52.0" prefWidth="233.0" styleClass="btn1" stylesheets="@../assets/css/colorCss.css" text="ADD PRODUCT">
                <font>
                   <Font name="System Bold" size="26.0" />
                </font>
             </Button>
-            <Label fx:id="lblCount" layoutX="14.0" layoutY="14.0" text="00" />
+            <Label fx:id="lblOrderCount" layoutX="78.0" layoutY="14.0" prefHeight="21.0" prefWidth="58.0" text="00" textFill="#e80a0a">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font></Label>
+            <Label layoutX="8.0" layoutY="14.0" text="Order ID : " />
+            <Label fx:id="lblDate" layoutX="1134.0" layoutY="18.0" prefHeight="33.0" prefWidth="95.0" text="Label" textFill="#1a45e1">
+               <font>
+                  <Font name="System Bold Italic" size="15.0" />
+               </font>
+            </Label>
          </children>
       </Pane>
    </children>
