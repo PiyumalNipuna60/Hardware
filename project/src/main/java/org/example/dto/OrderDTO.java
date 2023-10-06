@@ -14,4 +14,5 @@ public class OrderDTO {
     int total;
     Date date;
     int totalDiscount;
+
 }

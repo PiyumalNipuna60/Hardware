@@ -135,29 +135,53 @@ public class PlaceOrderFormController {
 
     /*------------------------transaction ekak gahanna one-------------------------*/
     public void btnPlaceOrderOnAction(ActionEvent actionEvent) {
-        String OrderId = lblOrderCount.getText();
-        for (int i = 0; i < AllProductDetails.size(); i++) {
-            String id = String.valueOf(AllProductDetails.get(i).getId());
-            String productId = AllProductDetails.get(i).getProductId();
-            String discount = String.valueOf(AllProductDetails.get(i).getDiscount());
-            int qty = AllProductDetails.get(i).getQty();
 
-            try {
-                System.out.println(OrderId);
-                if (orderDetailsBO.Save(new OrderDetailsDTO(productId,OrderId,discount,qty))){
-                    System.out.println("ok");
-                }
-            } catch (SQLException | ClassNotFoundException e) {
-                throw new RuntimeException(e);
-            }
+        double totalPrice=0;
+        double discount2=0;
+
+        /*----calculate totalPrice----*/
+        for (PlaceOrderTm product : AllProductDetails) {
+            int x = product.getCost() * product.getQty();
+            discount2=((double)x * product.getDiscount()/ 100);
+            totalPrice=x-discount2;
+            System.out.println("totalPrice "+totalPrice);
         }
-        removeDataArray();
-        loadAllOrder();
-        updateOrderNumber();
+
+
+//
+//        String OrderId = lblOrderCount.getText();
+//        for (int i = 0; i < AllProductDetails.size(); i++) {
+//            String id = String.valueOf(AllProductDetails.get(i).getId());
+//            String productId = AllProductDetails.get(i).getProductId();
+//            String discount = String.valueOf(AllProductDetails.get(i).getDiscount());
+//            int qty = AllProductDetails.get(i).getQty();
+//
+//            try {
+//                System.out.println(OrderId);
+//                if (orderDetailsBO.Save(new OrderDetailsDTO(productId,OrderId,discount,qty))){
+//                    System.out.println("ok");
+//                }
+//            } catch (SQLException | ClassNotFoundException e) {
+//                throw new RuntimeException(e);
+//            }
+//        }
+//        removeDataArray();
+//        loadAllOrder();
+//        updateOrderNumber();
+
+
     }
+
 
     private void updateOrderNumber(){
         try {
+            ArrayList<OrderDTO> all1 = orderBO.getAll();
+            for (OrderDTO d1:all1) {
+                if (d1.getTotal()==0){
+                    orderBO.delete(d1.getOrderId());
+                }
+            }
+
             ArrayList<OrderDTO> all = orderBO.getAll();
             String size = "O00" + String.valueOf(all.size() + 1);
 

@@ -11,11 +11,11 @@
 
 <AnchorPane xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controller.PlaceOrderFormController">
    <children>
-      <Pane fx:id="mainPane" layoutY="3.0" prefHeight="857.0" prefWidth="1244.0" style="-fx-background-color: white; -fx-background-radius: 20;">
+      <Pane id="main" fx:id="mainPane" layoutX="6.0" layoutY="-11.0" prefHeight="857.0" prefWidth="1244.0" style="-fx-background-radius: 20;" styleClass="main" stylesheets="@../assets/css/PlaceOrder.css">
          <children>
             <Pane layoutX="25.0" layoutY="367.0" prefHeight="412.0" prefWidth="1201.0" style="-fx-background-color: #E5E1E1; -fx-background-radius: 16;">
                <children>
-                  <TableView fx:id="tblOrder" layoutX="14.0" layoutY="7.0" prefHeight="398.0" prefWidth="1173.0" stylesheets="@../assets/css/PlaceOrder.css">
+                  <TableView fx:id="tblOrder" layoutX="14.0" layoutY="7.0" prefHeight="398.0" prefWidth="1173.0" styleClass="main" stylesheets="@../assets/css/PlaceOrder.css">
                     <columns>
                       <TableColumn fx:id="colID" prefWidth="64.0" text="ID" />
                       <TableColumn fx:id="colProductId" prefWidth="157.0" text="Product ID" />
@@ -92,7 +92,7 @@
                         <Font name="Arial" size="21.0" />
                      </font>
                   </TextField>
-                  <Label layoutX="18.0" layoutY="-6.0" text="discount">
+                  <Label layoutX="18.0" layoutY="-6.0" text="discount price">
                      <font>
                         <Font name="System Bold" size="16.0" />
                      </font>
