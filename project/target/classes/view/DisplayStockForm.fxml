@@ -53,9 +53,9 @@
             </Pane>
             <Pane layoutX="960.0" layoutY="30.0" prefHeight="157.0" prefWidth="263.0" style="-fx-background-color: #E5E1E1; -fx-background-radius: 16;">
                <children>
-                  <Label fx:id="lblTime" layoutX="48.0" layoutY="14.0" prefHeight="71.0" prefWidth="171.0" text="12.30">
+                  <Label fx:id="lblTime" layoutX="48.0" layoutY="14.0" prefHeight="71.0" prefWidth="171.0" text="12.30" textFill="#a82b2b">
                      <font>
-                        <Font name="Franklin Gothic Medium" size="61.0" />
+                        <Font size="38.0" />
                      </font>
                   </Label>
                   <Label fx:id="lblDate" layoutX="20.0" layoutY="70.0" prefHeight="71.0" prefWidth="231.0" text="23 oct 2023">

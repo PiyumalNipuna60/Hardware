@@ -115,7 +115,7 @@ public class DisplayStockFormController {
     private void generateRealTime() {
         lblDate.setText(LocalDate.now().toString());
         Timeline timeline = new Timeline(new KeyFrame(javafx.util.Duration.ZERO, e -> {
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("hh:mm");
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("hh:mm:ss");
             lblTime.setText(LocalDateTime.now().format(formatter));
         }), new KeyFrame(Duration.seconds(1)));
         timeline.setCycleCount(Animation.INDEFINITE);

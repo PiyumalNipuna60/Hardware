@@ -10,4 +10,6 @@ import java.util.ArrayList;
 
 public interface ProductDAO extends CrudDAO<ProductDTO,String> {
     public ArrayList<ProductDTO> getAllByName(String name, String nickName) throws SQLException, ClassNotFoundException;
+
+    public boolean updateQty(String id,int qty) throws SQLException, ClassNotFoundException;
 }

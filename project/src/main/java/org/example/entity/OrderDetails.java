@@ -1,5 +1,4 @@
-package org.example.dto;
-
+package org.example.entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -9,7 +8,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 @Data
-public class OrderDetailsDTO {
+public class OrderDetails {
     String productId;
     String orderId;
 
