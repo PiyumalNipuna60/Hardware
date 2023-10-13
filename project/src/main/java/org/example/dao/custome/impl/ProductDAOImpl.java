@@ -46,6 +46,11 @@ public class ProductDAOImpl implements ProductDAO {
     }
 
     @Override
+    public boolean updateQty(String id, int qty) throws SQLException, ClassNotFoundException {
+        return SqlUtil.executeUpdate("UPDATE Product SET qty=? WHERE productId=?",qty,id);
+    }
+
+    @Override
     public boolean Save(ProductDTO dto) throws SQLException, ClassNotFoundException {
         return  SqlUtil.executeUpdate("insert into Product values(?,?,?,?,?,?,?)",
                 dto.getProductId(),

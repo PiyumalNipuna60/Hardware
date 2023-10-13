@@ -5,6 +5,7 @@ import org.example.dao.custome.OrderDAO;
 import org.example.dao.custome.OrderDetailsDAO;
 import org.example.dto.OrderDTO;
 import org.example.dto.OrderDetailsDTO;
+import org.example.entity.OrderDetails;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -20,12 +21,14 @@ public class OrderDetailsDAOImpl implements OrderDetailsDAO {
                     new OrderDetailsDTO(
                             resultSet.getString(1),
                             resultSet.getString(2),
-                            resultSet.getString(3),
+                            resultSet.getInt(3),
                             resultSet.getInt(4)
                     ));
         }
         return AllOrder;
     }
+
+
 
     @Override
     public boolean Save(OrderDetailsDTO dto) throws SQLException, ClassNotFoundException {
@@ -59,7 +62,7 @@ public class OrderDetailsDAOImpl implements OrderDetailsDAO {
             orderDTO1 = new OrderDetailsDTO(
                     resultSet.getString(1),
                     resultSet.getString(2),
-                    resultSet.getString(3),
+                    resultSet.getInt(3),
                     resultSet.getInt(4));
         }
         return orderDTO1;

@@ -14,6 +14,6 @@ import java.util.Date;
 public class Order {
     String orderId;
     int total;
-    Date date;
+    String date;
     int totalDiscount;
 }

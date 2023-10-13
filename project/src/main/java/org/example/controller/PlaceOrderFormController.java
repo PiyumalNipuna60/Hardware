@@ -12,21 +12,23 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderImage;
 import javafx.scene.layout.Pane;
 import javafx.util.Duration;
+import org.example.bo.custom.PurchaseOrderBO;
 import org.example.bo.custom.impl.OrderBOImpl;
 import org.example.bo.custom.impl.OrderDetailsBOImpl;
 import org.example.bo.custom.impl.ProductBOImpl;
+import org.example.bo.custom.impl.PurchaseOderBOImpl;
 import org.example.dto.OrderDTO;
 import org.example.dto.OrderDetailsDTO;
 import org.example.dto.ProductDTO;
 import org.example.entity.tm.PlaceOrderTm;
 import sun.util.calendar.LocalGregorianCalendar;
 
-import java.sql.Date;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class PlaceOrderFormController {
     public static ProductBOImpl productBO = new ProductBOImpl();
@@ -36,6 +38,9 @@ public class PlaceOrderFormController {
     OrderBOImpl orderBO = new OrderBOImpl();
 
     private final OrderDetailsBOImpl orderDetailsBO = new OrderDetailsBOImpl();
+
+    PurchaseOrderBO purchaseOrderBO=new PurchaseOderBOImpl();
+
     public TableView tblOrder;
     public TableColumn colProductId;
     public TableColumn colPName;
@@ -136,6 +141,10 @@ public class PlaceOrderFormController {
     /*------------------------transaction ekak gahanna one-------------------------*/
     public void btnPlaceOrderOnAction(ActionEvent actionEvent) {
 
+        String orderID = lblOrderCount.getText();
+        String date = lblDate.getText();
+
+
         double totalPrice=0;
         double discount2=0;
 
@@ -145,6 +154,23 @@ public class PlaceOrderFormController {
             discount2=((double)x * product.getDiscount()/ 100);
             totalPrice=x-discount2;
             System.out.println("totalPrice "+totalPrice);
+        }
+
+
+       // boolean b = false;
+        try {
+           boolean b = purchaseOrderBO.purchaseOrder(new OrderDTO(orderID, (int) totalPrice, date, (int) discount2, AllProductDetails));
+            if (b){
+                new Alert(Alert.AlertType.CONFIRMATION,"Order Added Succuss").show();
+            }else {
+                new Alert(Alert.AlertType.ERROR,"Order NOt Added").show();
+            }
+
+        } catch (SQLException e) {
+            //throw new RuntimeException(e);
+            System.out.println(e);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
         }
 
 
@@ -185,7 +211,7 @@ public class PlaceOrderFormController {
             ArrayList<OrderDTO> all = orderBO.getAll();
             String size = "O00" + String.valueOf(all.size() + 1);
 
-            orderBO.Save(new OrderDTO(size,0,Date.valueOf(lblDate.getText()),0));
+           // orderBO.Save(new OrderDTO(size,0,Date.valueOf(lblDate.getText()),0));
             lblOrderCount.setText(size);
         } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);
@@ -205,6 +231,8 @@ public class PlaceOrderFormController {
                 int discount = Integer.parseInt(txtDiscount.getText());
                 int availableQty = Integer.parseInt(txtAvailableQuantity.getText());
                 int orderQty = Integer.parseInt(txtOrderQuantity.getText());
+
+                int newQTY=availableQty-orderQty;
 
                 AllProductDetails.add(new PlaceOrderTm(AllProductDetails.size() + 1, id, name, nickName, price, discount, orderQty));
 

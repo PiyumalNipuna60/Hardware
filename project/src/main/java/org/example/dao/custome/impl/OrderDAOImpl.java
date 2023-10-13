@@ -19,7 +19,7 @@ public class OrderDAOImpl implements OrderDAO {
                     new OrderDTO(
                             resultSet.getString(1),
                             resultSet.getInt(2),
-                            resultSet.getDate(3),
+                            resultSet.getString(3),
                             resultSet.getInt(4)
                     ));
         }
@@ -58,7 +58,7 @@ public class OrderDAOImpl implements OrderDAO {
             orderDTO1 = new OrderDTO(
                     resultSet.getString(1),
                     resultSet.getInt(2),
-                    resultSet.getDate(3),
+                    resultSet.getString(3),
                     resultSet.getInt(4));
         }
         return orderDTO1;

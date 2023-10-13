@@ -13,6 +13,6 @@ public class OrderDetailsDTO {
     String productId;
     String orderId;
 
-    String discount;
+    int discount;
     int qtyOnHand;
 }
