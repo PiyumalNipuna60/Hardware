@@ -162,6 +162,9 @@ public class PlaceOrderFormController {
            boolean b = purchaseOrderBO.purchaseOrder(new OrderDTO(orderID, (int) totalPrice, date, (int) discount2, AllProductDetails));
             if (b){
                 new Alert(Alert.AlertType.CONFIRMATION,"Order Added Succuss").show();
+                removeDataArray();
+                loadAllOrder();
+                updateOrderNumber();
             }else {
                 new Alert(Alert.AlertType.ERROR,"Order NOt Added").show();
             }
