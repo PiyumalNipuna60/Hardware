@@ -18,30 +18,36 @@
             <Glow level="0.02" />
          </effect>
       </ImageView>
-      <Pane layoutX="26.0" layoutY="37.0" prefHeight="857.0" prefWidth="293.0" style="-fx-background-color: #FFFFFF;; -fx-background-radius: 20;">
+      <Pane layoutX="26.0" layoutY="34.0" prefHeight="857.0" prefWidth="317.0" style="-fx-background-radius: 20;" styleClass="main" stylesheets="@../assets/css/PlaceOrder.css">
          <children>
-            <Button layoutX="29.0" layoutY="54.0" mnemonicParsing="false" onAction="#btnPlaceOrderOnAction" prefHeight="52.0" prefWidth="233.0" styleClass="btn1" stylesheets="@../assets/css/colorCss.css" text="PLACE ORDER">
+            <Button layoutX="23.0" layoutY="213.0" mnemonicParsing="false" onAction="#btnPlaceOrderOnAction" prefHeight="56.0" prefWidth="273.0" styleClass="btn1" stylesheets="@../assets/css/colorCss.css" text="PLACE ORDER">
                <font>
                   <Font name="System Bold" size="26.0" />
                </font>
             </Button>
-            <Button layoutX="30.0" layoutY="135.0" mnemonicParsing="false" onAction="#btnDisplayStockOnAction" prefHeight="52.0" prefWidth="233.0" styleClass="btn1" stylesheets="@../assets/css/colorCss.css" text="DISPLAY STOCK">
+            <Button layoutX="23.0" layoutY="294.0" mnemonicParsing="false" onAction="#btnDisplayStockOnAction" prefHeight="56.0" prefWidth="273.0" styleClass="btn1" stylesheets="@../assets/css/colorCss.css" text="DISPLAY STOCK">
                <font>
                   <Font name="System Bold" size="26.0" />
                </font>
             </Button>
-            <Button layoutX="29.0" layoutY="214.0" mnemonicParsing="false" onAction="#btnPlaceInvoiceOnAction" prefHeight="52.0" prefWidth="233.0" styleClass="btn1" stylesheets="@../assets/css/colorCss.css" text="PLACE INVOICE">
+            <Button layoutX="23.0" layoutY="373.0" mnemonicParsing="false" onAction="#btnPlaceInvoiceOnAction" prefHeight="56.0" prefWidth="273.0" styleClass="btn1" stylesheets="@../assets/css/colorCss.css" text="PLACE INVOICE">
                <font>
                   <Font name="System Bold" size="26.0" />
                </font>
             </Button>
-            <Button layoutX="30.0" layoutY="294.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="233.0" styleClass="btn1" stylesheets="@../assets/css/colorCss.css">
+            <Button layoutX="23.0" layoutY="453.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="273.0" styleClass="btn1" stylesheets="@../assets/css/colorCss.css" text="Customer">
                <font>
                   <Font name="System Bold" size="26.0" />
                </font>
             </Button>
+            <Pane fx:id="ImagePane" layoutX="72.0" layoutY="34.0" prefHeight="150.0" prefWidth="163.0" style="-fx-background-radius: 100; -fx-border-radius: 100;" />
+            <ImageView fitHeight="173.0" fitWidth="189.0" layoutX="64.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/userImage.png" />
+               </image>
+            </ImageView>
          </children>
       </Pane>
-      <Pane fx:id="mainPane" layoutX="349.0" layoutY="37.0" prefHeight="857.0" prefWidth="1244.0" style="-fx-background-radius: 20;" stylesheets="@../assets/css/PlaceOrder.css" />
+      <Pane fx:id="mainPane" layoutX="349.0" layoutY="46.0" prefHeight="857.0" prefWidth="1244.0" style="-fx-background-radius: 20;" stylesheets="@../assets/css/PlaceOrder.css" />
    </children>
 </AnchorPane>
